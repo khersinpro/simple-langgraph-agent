@@ -1,8 +1,21 @@
+import uuid
 from config import load_environment
 from agent.react_agent import agent
 
 def chat_loop():
-    agent_config = {"configurable": {"thread_id": "1"}}
+    prompt = "Please enter conversation ID (or press Enter to create a new one): "
+    user_input = input(prompt)
+
+    if not user_input:
+        thread_id = str(uuid.uuid4())
+    else:
+        thread_id = user_input.strip()
+
+    print(f"Using conversation ID: {thread_id}")
+    print("Country Information Assistant started!")
+    print("Type 'help' for capabilities or 'exit' to quit.")
+
+    agent_config = {"configurable": {"thread_id": thread_id}}
 
     while True:
         try:
