@@ -1,5 +1,6 @@
 from typing import Annotated, TypedDict
 from langchain_core.messages import BaseMessage, SystemMessage
+from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph.message import add_messages
 from langgraph.graph import END, START, StateGraph
 from langgraph.prebuilt.tool_node import ToolNode
@@ -9,6 +10,8 @@ from prompts.system_prompt import SYSTEM_PROMPT
 
 class AgentState(TypedDict):
     messages: Annotated[list[BaseMessage], add_messages]
+
+memory = InMemorySaver()
 
 tools = [get_country_info, get_country_by_code]
 llm = OpenAIFactory.create_llm()
@@ -47,4 +50,4 @@ graph_builder.add_conditional_edges(
     { END: END, "call_tools": "call_tools" }
 )
 
-agent = graph_builder.compile()
+agent = graph_builder.compile(checkpointer=memory)
