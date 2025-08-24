@@ -1,0 +1,52 @@
+# Fichiers Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environnements virtuels
+.venv/
+venv/
+env/
+ENV/
+*.env
+*.venv
+
+# Fichiers de configuration d'environnement
+.env
+.env.*
+
+# Fichiers de logs
+*.log
+
+# Fichiers de cache
+.cache/
+*.cache
+
+# Fichiers de test
+*.cover
+coverage.*
+.tox/
+.nox/
+.pytest_cache/
+
+# Fichiers de distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Fichiers de l'éditeur
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Systèmes d'exploitation
+.DS_Store
+Thumbs.db
+
+# Autres
+*.bak
+*.swp
+*.tmp
